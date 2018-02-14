@@ -30,6 +30,7 @@ namespace Practica1_Bits
         - name: Indicates de size, in bits, of the data that read (the returned value will
             be a Int32 the size of the data. The default value is 1
         */
+        public int GetsDataFromBit(int pos, int size = 1)
         {
             if (size == 1)
                 return (dataHolder & ToInt32(Pow(2, pos))) >> pos; // int activeBit = ToInt32(Pow(2, pos));
