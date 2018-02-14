@@ -1,6 +1,6 @@
 # Practica Bits y Bytes
 
-## Archivo con el codigo: [Form1.cs](Practica1_Bits/Form1.cs)
+###### Archivo con el codigo: [Form1.cs](Practica1_Bits/Form1.cs)
 
 Manipular de manera individual los bits de un dato leído del usuario, al procesar el numero, solo se trabajara con los 3 bytes mas bajos, el primero se forma por:
 - bit 7 sensor 1 encendido/apagado
