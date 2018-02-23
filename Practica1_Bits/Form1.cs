@@ -7,34 +7,29 @@ namespace Practica1_Bits
 {
     public partial class Form1 : Form
     {
-        /// <summary>
-        /// Integer number that handle the bits to store multiple data.
-        /// Only works with the 3 lowest bytes.
-        /// 
-        /// First Byte:
-        ///     - bit 7    : sensor 1: on / off
-        ///     - bit 6    : sensor 2: on / off
-        ///     - bits 4-5 : tank level: ( empty: 0, half: 1, full: 2, filling: 3 )
-        ///     - bits 1-3 : movement direction: ( N: 0, NE: 1, E: 2, SE: 3, S: 4, SO: 5, O: 6, NO: 7 )
-        ///     - bit 0    : NOT USED
-        ///     
-        /// Bytes 2 and 3:
-        ///     Represents the date. The 16 bits represent this data, the base year is 1900.
-        ///     The distribution is: YYYYYYY MMMM DDDDD, where from right to left, the first D is the
-        ///     LSD and the last Y is the MSD.
-        /// </summary>
+        /**
+        First Byte:
+            - bit 7    : sensor 1: on / off
+            - bit 6    : sensor 2: on / off
+            - bits 4-5 : tank level: ( empty: 0, half: 1, full: 2, filling: 3 )
+            - bits 1-3 : movement direction: ( N: 0, NE: 1, E: 2, SE: 3, S: 4, SO: 5, O: 6, NO: 7 )
+            - bit 0    : NOT USED
+            
+        Bytes 2 and 3:
+            Represents the date. The 16 bits represent this data, the base year is 1900.
+            The distribution is: YYYYYYY MMMM DDDDD, where from right to left, the first D is the
+            LSD and the last Y is the MSD.
+        */
         private int dataHolder;
 
         public Form1() => InitializeComponent();
 
-        /// <summary>
-        /// Gets an int value from the specific bit index.
-        /// </summary>
-        /// <param name="pos">Indicates the bit index where starts the value that
-        /// the function will return. This bit represents the Least Significant Digit of the value</param>
-        /// <param name="size">Indicates de size, in bits, of the data that read (the returned value will
-        /// be a Int32 the size of the data. The default value is 1</param>
-        /// <returns>A Integer value read from dataHolder</returns>
+        /*
+        - pos:Indicates the bit index where starts the value that
+            the function will return. This bit represents the Least Significant Digit of the value</param>
+        - name: Indicates de size, in bits, of the data that read (the returned value will
+            be a Int32 the size of the data. The default value is 1
+        */
         public int GetsDataFromBit(int pos, int size = 1)
         {
             if (size == 1)
@@ -47,12 +42,11 @@ namespace Practica1_Bits
                 return (dataHolder & ToInt32(Pow(2, size)) - 1); // int activeBits = ToInt32(Pow(2, size)) - 1;
         }
 
-        /// <summary>
-        /// Sets an int value in the specific bit index.
-        /// </summary>
-        /// <param name="data">The value that will be store</param>
-        /// <param name="pos">Indicates the bit index where starts to write.
-        /// This bit represents the Least Significant Digit of the value</param>
+        /*
+        - data: The value that will be store.
+        - pos: Indicates the bit index where starts to write.
+            This bit represents the Least Significant Digit of the value
+        */
         public void SetDataToBit(int data, int pos)
         {
             int size = 0, _data = data, offset = ToInt32(Pow(2, pos));
